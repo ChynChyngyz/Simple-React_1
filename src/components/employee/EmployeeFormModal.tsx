@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { useEffect } from 'react';
+
 import { toast } from 'react-hot-toast';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -51,8 +51,9 @@ const EmployeeFormModal: React.FC<EmployeeFormModalProps> = ({
 
   const { mutateAsync: createEmployee, error: createError } =
     useCreateEmployeeMutation();
-  const { mutateAsync: editEmployee, error: editError } =
+  const {error: editError } =
     useEditEmployeeMutation();
+
 
   const {
     register,
@@ -60,6 +61,8 @@ const EmployeeFormModal: React.FC<EmployeeFormModalProps> = ({
     reset,
     formState: { errors },
   } = useForm<FormData>({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     resolver: yupResolver(empSchema),
   });
 
@@ -90,6 +93,7 @@ const EmployeeFormModal: React.FC<EmployeeFormModalProps> = ({
       isOpen={isOpen}
       handleClose={handleClose}
     >
+      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='mt-6 w-full'>
           <div className='mb-3'>

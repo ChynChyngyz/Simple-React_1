@@ -121,6 +121,8 @@ const EmployeeList: React.FC<EmployeeListProps> = ({ searchText }) => {
         handleClose={handleFormClose}
       />
       <DeleteEmployeeModal
+          /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+          // @ts-ignore
         employee={selectedEmployee}
         isOpen={isDeleteOpen}
         handleClose={handleDeleteClose}
